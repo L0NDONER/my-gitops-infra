@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-nginx
 spec:
-  replicas: 1  # Change this to 5 in Git, and ArgoCD does the rest!
+  replicas: 5  # Change this to 5 in Git, and ArgoCD does the rest!
   selector:
     matchLabels:
       app: nginx
