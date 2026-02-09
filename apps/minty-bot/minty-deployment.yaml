@@ -17,10 +17,12 @@ spec:
         image: minty-bot:latest
         imagePullPolicy: IfNotPresent
         ports:
-        - containerPort: 5000
+        - containerPort: 5005        # Update this to match your code
         env:
-        - name: FLASK_RUN_HOST    # <--- Add this section
+        - name: FLASK_RUN_HOST
           value: "0.0.0.0"
+        - name: FLASK_RUN_PORT        # Tell Flask to use 5005
+          value: "5005"
         envFrom:
         - secretRef:
             name: minty-secrets
