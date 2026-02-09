@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: minty-bot
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: git@github.com:L0NDONER/gitops-homelab.git
+    targetRevision: HEAD
+    path: apps/minty-bot  # This is the folder where your deployment.yaml lives
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
