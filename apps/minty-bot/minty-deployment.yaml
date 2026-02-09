@@ -14,10 +14,13 @@ spec:
     spec:
       containers:
       - name: commander
-        image: minty-bot:latest        # Change from the IP address to this
-        imagePullPolicy: IfNotPresent  # Tell K8s: "If you have it locally, use it"
+        image: minty-bot:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
+        env:
+        - name: FLASK_RUN_HOST    # <--- Add this section
+          value: "0.0.0.0"
         envFrom:
         - secretRef:
-            name: minty-secrets        # This links to your bot secrets
+            name: minty-secrets
