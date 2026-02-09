@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minty-bot-new
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minty-v2
+  template:
+    metadata:
+      labels:
+        app: minty-v2
+    spec:
+      containers:
+      - name: commander
+        image: 10.0.0.71:5005/minty-bot:v1.0
+        ports:
+        - containerPort: 5000
+        envFrom:
+        - secretRef:
+            name: minty-secrets
